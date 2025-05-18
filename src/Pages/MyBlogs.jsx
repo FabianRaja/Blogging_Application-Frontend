@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
 export default function MyBlogs(){
+
+    const navigate=useNavigate();
     return(
         <div>
             <Navbar/>
@@ -19,7 +22,7 @@ export default function MyBlogs(){
                     <h6>Updated At - 16-05-2025</h6>
                 </div>
                 <div className="flex justify-center">
-                 <button className="btn btn-primary m-3">Edit</button>
+                 <button className="btn btn-primary m-3" onClick={()=>navigate("/update")}>Edit</button>
                 <button className="btn btn-primary m-3">Delete</button>
                 </div>
             </div>

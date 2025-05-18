@@ -4,10 +4,10 @@ export const AppCtx=createContext(null);
 
 export default function AppContext({children}){
     //required states is created and passed to the AppCtx Provider for global usage
-    const [auth,setAuth]=useState("Login")
+    const [auth,setAuth,name,setName,email,setEmail]=useState("Login")
    
     return(
-        <AppCtx.Provider value={{auth,setAuth}}>
+        <AppCtx.Provider value={{auth,setAuth,name,setName,email,setEmail}}>
             {children}
         </AppCtx.Provider>
     )

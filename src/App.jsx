@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import CreateBlog from './Pages/CreateBlog'
 import HomePage from './Pages/HomePage'
@@ -9,7 +10,13 @@ function App() {
 
   return (
     <div className="gradient-background">
-     <UpdateBlog/>
+     <Routes>
+      <Route exact path="/" element={<LoginPage/>}/>
+      <Route path="/home" element={<HomePage/>}/>
+      <Route path="/myblogs" element={<MyBlogs/>}/>
+      <Route path="/create" element={<CreateBlog/>}/>
+      <Route path="/update" element={<UpdateBlog/>}/>
+     </Routes>
     </div>
   )
 }
