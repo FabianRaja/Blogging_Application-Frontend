@@ -9,7 +9,6 @@ import UpdateBlog from './Pages/UpdateBlog'
 function App() {
 
   return (
-    <div className="gradient-background">
      <Routes>
       <Route exact path="/" element={<LoginPage/>}/>
       <Route path="/home" element={<HomePage/>}/>
@@ -17,7 +16,6 @@ function App() {
       <Route path="/create" element={<CreateBlog/>}/>
       <Route path="/update" element={<UpdateBlog/>}/>
      </Routes>
-    </div>
   )
 }
 

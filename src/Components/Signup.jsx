@@ -16,7 +16,7 @@ export default function Signup(){
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             email:"",
-            username:"",
+            name:"",
             password:""
         },
         validationSchema:registerSchema,
@@ -42,9 +42,9 @@ export default function Signup(){
 
 
     return(
-        <form className="flex flex-col items-center text-center" onSubmit={handleSubmit} onReset={handleReset}>
-                            <input type="text" placeholder="User Name" className="input text-center m-2" value={values.username} onChange={handleChange} onBlur={handleBlur} name="username"/>
-                             {touched.username && errors.username?(<div className="font-bold text-xs mb-1">{errors.username}</div>):("")}
+        <form className="flex flex-col items-center text-center" onSubmit={handleSubmit}>
+                            <input type="text" placeholder="User Name" className="input text-center m-2" value={values.name} onChange={handleChange} onBlur={handleBlur} name="name"/>
+                             {touched.name && errors.name?(<div className="font-bold text-xs mb-1">{errors.name}</div>):("")}
                             <input type="email" placeholder="Email Id" className="input text-center m-2" value={values.email} onChange={handleChange} onBlur={handleBlur} name="email"/>
                             {touched.email && errors.email?(<div className="font-bold text-xs mb-1">{errors.email}</div>):("")}
                             <input type="password" placeholder="Password" className="input text-center m-2" value={values.password} onChange={handleChange} onBlur={handleBlur} name="password" />

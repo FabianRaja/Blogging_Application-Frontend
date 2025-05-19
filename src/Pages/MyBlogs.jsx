@@ -1,42 +1,38 @@
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import { useEffect } from "react";
+import MyBlogsContent from "../Components/MyBlogsContent";
+import { useContext, useEffect } from "react"
+import { AppCtx } from "../Context/AppContext"
 
 export default function MyBlogs(){
 
     const navigate=useNavigate();
 
+      const {data,myData,setMyData}=useContext(AppCtx);
+
+
     useEffect(()=>{
           if(!localStorage.getItem("token")){
             navigate("/")
           }
+          const myData=data.filter((value,index)=>value.userId==localStorage.getItem("id"));
+          setMyData(myData);
         },[])
 
     return(
         <div>
             <Navbar/>
-
-            <div className="flex justify-center">
-         <div className="card  bg-base-100 w-6xl m-10 text-center shadow-sm">
-            
-            <div className="card-body p-8">
-                <h2 className="card-title justify-center mb-1 text-xl uppercase underline">Cricketing Genius</h2>
-                <p className="mb-2">A card component has a figure, a body part, and inside body there are title and actions parts,A card component has a figure, a body part, and inside body there are title and actions partsA card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div className="card-actions justify-center">
-                    <h6>Author - Deva</h6>
-                    <h6>Category - Music</h6>
-                    <h6>Image URL - "https://google.com"</h6>
-                    <h6>Created At - 12-05-2025</h6>
-                    <h6>Updated At - 16-05-2025</h6>
-                </div>
-                <div className="flex justify-center">
-                 <button className="btn btn-primary m-3" onClick={()=>navigate("/update")}>Edit</button>
-                <button className="btn btn-primary m-3">Delete</button>
-                </div>
-            </div>
-        </div>
-            
-        </div>
+            {myData && myData.map((value,index)=>(
+                <MyBlogsContent key={index}
+                author={value.author}
+                category={value.category}
+                content={value.content}
+                createdAt={value.createdAt}
+                image={value.image?value.image:"No URL provided by the author"}
+                title={value.title}
+                updatedAt={value.updatedAt}
+                />
+            ))}
 
 
         </div>
