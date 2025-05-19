@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import Navbar from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateBlog(){
-
+    
+    const navigate=useNavigate();
+    useEffect(()=>{
+          if(!localStorage.getItem("token")){
+            navigate("/")
+          }
+        },[])
 
     return(
         <div>
