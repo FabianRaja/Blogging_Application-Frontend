@@ -28,6 +28,7 @@ export default function Login(){
                         setLoading("off");
                         setResult(response.message);
                         navigate("/home");
+                        window.location.reload();
                     },3000)
                     setTimeout(()=>{
                         setResult("")

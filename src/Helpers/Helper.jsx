@@ -51,12 +51,30 @@ export async function getBlog(token){
     }
 }
 
-//function to create  blog data=
+//function to create  blog data
 export async function createBlog(obj){
     try{
         const res=await fetch(`${DataAPI}`,{
             method:"POST",  
             body:JSON.stringify(obj), 
+            headers:{
+                "Content-type":"application/json",
+                "x-auth-token":localStorage.getItem("token")
+            },
+        })
+        const data=await res.json();
+        return data;
+    }catch(error){
+           console.log("error creating blog",error);
+    }
+}
+
+//function to delete blog data
+export async function deleteBlog(id){
+    try{
+        const res=await fetch(`${DataAPI}/${id}`,{
+            method:"DELETE",  
+            body:JSON.stringify({}), 
             headers:{
                 "Content-type":"application/json",
                 "x-auth-token":localStorage.getItem("token")

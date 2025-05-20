@@ -26,7 +26,6 @@ export default function CreateBlog(){
         validationSchema:createBlogSchema,
         onSubmit:(obj)=>{
             setLoading(true);
-            console.log(obj)
             // passing formikObj to login user function and handling responses
             createBlog(obj).then((result)=>{
                 

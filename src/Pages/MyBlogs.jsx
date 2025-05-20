@@ -15,8 +15,8 @@ export default function MyBlogs(){
           if(!localStorage.getItem("token")){
             navigate("/")
           }
-          const myData=data.filter((value,index)=>value.userId==localStorage.getItem("id"));
-          setMyData(myData);
+          // const myData=data.filter((value,index)=>value.userId==localStorage.getItem("id"));
+          // setMyData(myData);
         },[])
 
     return(
@@ -31,8 +31,10 @@ export default function MyBlogs(){
                 image={value.image?value.image:"No URL provided by the author"}
                 title={value.title}
                 updatedAt={value.updatedAt}
+                id={value._id}
                 />
             ))}
+            {myData.length===0?<h1 className="text-center mt-20 uppercase text-neutral text-xl font-bold">No blogs created</h1>:""}
 
 
         </div>

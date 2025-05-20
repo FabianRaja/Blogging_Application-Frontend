@@ -13,15 +13,20 @@ export default function AppContext({children}){
    
 
     useEffect(()=>{
+       
+
       if(localStorage.getItem("token")){
-          getBlog(localStorage.getItem("token")).then((response)=>{
+           getBlog(localStorage.getItem("token")).then((response)=>{
                         if(response.message==="Successfull"){
-                            setData(response.data)
+                            setData(response.data);
+                            const myBlogData=(response.data).filter((value,index)=>value.userId==localStorage.getItem("id"));
+                            setMyData(myBlogData);
                         }
                     }).catch((response)=>{
                         console.log(response);
-                    })
+                    });
       }
+      
     },[])
     
 
