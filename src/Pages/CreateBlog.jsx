@@ -60,16 +60,16 @@ export default function CreateBlog(){
         <div>
              <Navbar/>
 
-               <div className="flex justify-center text-center mt-15 " >
+               <div className="flex justify-center items-center text-center min-h-screen pt-20" >
               
-                         <div className="card card-border bg-base-100 w-2xl m-4">
+                         <div className="card card-border bg-base-100 w-full max-w-2xl m-4">
               
                           
                               <div className="card-body items-center" >
                                  
                                 
               
-                                  <form className="flex flex-col items-center text-center w-2xl p-5" onSubmit={handleSubmit}>
+                                  <form className="flex flex-col items-center text-center w-full p-5" onSubmit={handleSubmit}>
                                 <input type="text" placeholder="Title" className="input text-center m-2" value={values.title} name="title" onBlur={handleBlur} onChange={handleChange}/>
                                  {touched.title && errors.title?(<div className="text-secondary">{errors.title}</div>):""}
                                 <input type="text" placeholder="Category" className="input text-center m-2" value={values.category} name="category" onBlur={handleBlur} onChange={handleChange}/>

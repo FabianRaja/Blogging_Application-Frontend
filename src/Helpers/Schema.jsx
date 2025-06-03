@@ -20,3 +20,11 @@ export const createBlogSchema=yup.object({
     content:yup.string().required("Please enter content"),
     image:yup.string()
 })
+
+//for update blog form
+export const updateBlogSchema=yup.object({
+    title:yup.string().required("Please enter email"),
+    category:yup.string().required("Please enter password"),
+    content:yup.string().required("Please enter content"),
+    image:yup.string()
+})

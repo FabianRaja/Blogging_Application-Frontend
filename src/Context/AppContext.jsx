@@ -10,7 +10,11 @@ export default function AppContext({children}){
     const [loading,setLoading]=useState("");
     const [data,setData]=useState([]);
     const [myData,setMyData]=useState([]);
-   
+    const [editData,setEditData]=useState([]);
+    const [filterCategory,setFilterCategory]=useState("");
+    const [filterAuthor,setFilterAuthor]=useState("");
+    const [authorsList,setAuthorsList]=useState([]);
+      const [categoryList,setCategoryList]=useState([]);
 
     useEffect(()=>{
        
@@ -19,6 +23,14 @@ export default function AppContext({children}){
            getBlog(localStorage.getItem("token")).then((response)=>{
                         if(response.message==="Successfull"){
                             setData(response.data);
+                            (response.data).map((value,index)=>{
+                                if(!authorsList.includes(value.author)){
+                                 authorsList.push(value.author);
+                                }});
+                            (response.data).map((value,index)=>{
+                                if(!categoryList.includes(value.category)){
+                                 categoryList.push(value.category);
+                                }});    
                             const myBlogData=(response.data).filter((value,index)=>value.userId==localStorage.getItem("id"));
                             setMyData(myBlogData);
                         }
@@ -31,7 +43,7 @@ export default function AppContext({children}){
     
 
     return(
-        <AppCtx.Provider value={{auth,setAuth,result,setResult,loading,setLoading,data,setData,myData,setMyData}}>
+        <AppCtx.Provider value={{auth,setAuth,result,setResult,loading,setLoading,data,setData,myData,setMyData,editData,setEditData,filterCategory,setFilterCategory,filterAuthor,setFilterAuthor,authorsList,setAuthorsList,categoryList,setCategoryList}}>
             {children}
         </AppCtx.Provider>
     )

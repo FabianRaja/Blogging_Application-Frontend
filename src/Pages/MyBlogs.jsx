@@ -8,20 +8,19 @@ export default function MyBlogs(){
 
     const navigate=useNavigate();
 
-      const {data,myData,setMyData}=useContext(AppCtx);
+      const {myData}=useContext(AppCtx);
 
 
     useEffect(()=>{
           if(!localStorage.getItem("token")){
             navigate("/")
           }
-          // const myData=data.filter((value,index)=>value.userId==localStorage.getItem("id"));
-          // setMyData(myData);
         },[])
 
     return(
         <div>
             <Navbar/>
+            <div className="pt-27">
             {myData && myData.map((value,index)=>(
                 <MyBlogsContent key={index}
                 author={value.author}
@@ -34,6 +33,7 @@ export default function MyBlogs(){
                 id={value._id}
                 />
             ))}
+            </div>
             {myData.length===0?<h1 className="text-center mt-20 uppercase text-neutral text-xl font-bold">No blogs created</h1>:""}
 
 

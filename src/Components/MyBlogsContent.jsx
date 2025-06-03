@@ -7,7 +7,11 @@ export default function MyBlogsContent({title,content,author,category,image,crea
     
     const navigate=useNavigate();
     const [loadingg,setLoadingg]=useState("off");
-    const [resultt,setResultt]=useState("")
+    const [resultt,setResultt]=useState("");
+    function handleEdit(){
+        setLoadingg("on");
+        navigate(`/update/${id}`);
+    }
     function handleDelete(){
          setLoadingg("on")
         deleteBlog(id).then((response)=>{
@@ -33,9 +37,9 @@ export default function MyBlogsContent({title,content,author,category,image,crea
     }
     return(
         <div className="flex justify-center">
-         <div className="card  bg-base-100 w-6xl m-10 text-center shadow-sm">
+         <div className="card  bg-base-100 w-6xl m-4 text-center shadow-sm">
             
-            <div className="card-body p-8">
+            <div className="card-body p-7">
                 <h2 className="card-title justify-center mb-1 text-xl uppercase underline">{title}</h2>
                 <p className="mb-2">{content}</p>
                 <div className="card-actions justify-center">
@@ -46,7 +50,7 @@ export default function MyBlogsContent({title,content,author,category,image,crea
                     <h6>Updated At - {updatedAt}</h6>
                 </div>
                 <div className="flex justify-center">
-                 <button className="btn btn-primary m-3" onClick={()=>navigate("/update")}>Edit</button>
+                 <button className="btn btn-primary m-3" onClick={()=>handleEdit()}>Edit</button>
                 <button className="btn btn-primary m-3" onClick={()=>handleDelete()}>{loadingg==="on"?<span className="loading loading-ball loading-xs"></span>:"Delete"}</button>
                 </div>
                  {resultt?(<div className="font-bold text-sm mt-3 capitalize">{resultt}</div>):""}
